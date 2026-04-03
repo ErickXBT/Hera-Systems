@@ -1,6 +1,6 @@
 import express, { type Express } from "express";
 import cors from "cors";
-import pinoHttp = require("pino-http"); // ✅ ini yang benar untuk CJS
+const pinoHttp = require("pino-http") as any; // ✅ FIX FINAL
 import router from "./routes";
 import { logger } from "./lib/logger";
 
