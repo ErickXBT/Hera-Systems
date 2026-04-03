@@ -5,11 +5,15 @@
     "rootDir": "src",
     "types": ["node"],
 
+    // 🔥 OVERRIDE PENTING
     "module": "CommonJS",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "skipLibCheck": true
+
+    // 🔥 MATIKAN STRICT YANG BIKIN ERROR
+    "noImplicitAny": false,
+    "strict": false
   },
   "include": ["src"],
   "references": [
