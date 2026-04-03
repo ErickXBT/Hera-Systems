@@ -1,28 +1,22 @@
 import express, { type Express } from "express";
 import cors from "cors";
-import pinoHttp from "pino-http";
+const pinoHttp = require("pino-http"); // ✅ FIX UTAMA
 import router from "./routes";
 import { logger } from "./lib/logger";
 
-const pinoHttpMiddleware = (pinoHttp as any).default || pinoHttp;
-
 const app: Express = express();
 
-const httpLogger = pinoHttpMiddleware({
+const httpLogger = pinoHttp({
   logger,
   serializers: {
-    req(req: any) {
-      return {
-        id: req.id,
-        method: req.method,
-        url: req.url?.split("?")[0],
-      };
-    },
-    res(res: any) {
-      return {
-        statusCode: res.statusCode,
-      };
-    },
+    req: (req: any) => ({
+      id: req.id,
+      method: req.method,
+      url: req.url?.split("?")[0],
+    }),
+    res: (res: any) => ({
+      statusCode: res.statusCode,
+    }),
   },
 });
 
