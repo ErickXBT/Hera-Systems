@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #050a05;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body.game-active,
+body.game-active html,
+body.game-active #root {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* ===== LANDING RESPONSIVE ===== */
+
+/* Desktop nav hidden on mobile */
+.nav-links-desktop {
+  display: flex;
+}
+
+/* Hamburger hidden on desktop */
+.hamburger-btn {
+  display: none;
+}
+
+/* Connect wallet button */
+.connect-wallet-btn {
+  display: block;
+}
+
+/* Mobile menu dropdown */
+.mobile-menu {
+  display: none;
+}
+
+/* Section padding */
+.section-pad {
+  padding: 100px 40px;
+}
+
+/* Tokenomics 2-col grid */
+.tokenomics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Roadmap: alternating left/right */
+.roadmap-item-left {
+  display: flex;
+  justify-content: flex-start;
+}
+.roadmap-item-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.roadmap-card {
+  width: 45%;
+}
+
+/* Roadmap center line */
+.roadmap-center-line {
+  display: block;
+}
+
+/* Footer grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+/* ===== TABLET (≤ 900px) ===== */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .tokenomics-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section-pad {
+    padding: 72px 24px;
+  }
+}
+
+/* ===== MOBILE (≤ 640px) ===== */
+@media (max-width: 640px) {
+  .nav-links-desktop {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid rgba(41,255,122,0.35);
+    color: #29ff7a;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .connect-wallet-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: rgba(2,10,4,0.97);
+    border-bottom: 1px solid rgba(41,255,122,0.15);
+    padding: 16px 24px;
+    gap: 8px;
+    z-index: 99;
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-menu button {
+    background: none;
+    border: none;
+    color: rgba(200,255,212,0.7);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 10px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(41,255,122,0.06);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu button:hover {
+    color: #29ff7a;
+  }
+
+  .section-pad {
+    padding: 56px 20px;
+  }
+
+  .tokenomics-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Roadmap: stack everything left on mobile */
+  .roadmap-item-left,
+  .roadmap-item-right {
+    justify-content: flex-start;
+    padding-left: 28px;
+  }
+
+  .roadmap-card {
+    width: 100%;
+  }
+
+  .roadmap-center-line {
+    display: none;
+  }
+
+  .roadmap-dot {
+    left: 0 !important;
+    transform: none !important;
+  }
+}
