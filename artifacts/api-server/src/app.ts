@@ -4,9 +4,11 @@ import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
+const pinoHttpMiddleware = (pinoHttp as any).default || pinoHttp;
+
 const app: Express = express();
 
-const httpLogger = pinoHttp({
+const httpLogger = pinoHttpMiddleware({
   logger,
   serializers: {
     req(req: any) {
