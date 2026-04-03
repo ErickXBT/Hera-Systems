@@ -1,12 +1,12 @@
 import express, { type Express } from "express";
 import cors from "cors";
-const pinoHttp = require("pino-http"); // ✅ FIX UTAMA
+import * as pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
 
-const httpLogger = pinoHttp({
+const httpLogger = (pinoHttp as any)({
   logger,
   serializers: {
     req: (req: any) => ({
